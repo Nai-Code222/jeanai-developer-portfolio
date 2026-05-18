@@ -51,7 +51,7 @@ import { RevealDirective } from '../shared/reveal.directive';
           </form>
 
           <div class="contact-social">
-            <a href="#" class="social-pill"><span class="social-icon">gh</span> GitHub</a>
+            <a href="https://github.com/Nai-Code222" target="_blank" rel="noopener noreferrer" class="social-pill"><span class="social-icon">gh</span> GitHub</a>
             <a href="#" class="social-pill"><span class="social-icon">in</span> LinkedIn</a>
             <a href="mailto:JeanaiRoberts&#64;outlook.com" class="social-pill"><span class="social-icon">&#64;</span> Email</a>
             <a href="assets/JeanaiRoberts_Resume.pdf" download="JeanaiRoberts_Resume.pdf" class="social-pill resume-pill">
