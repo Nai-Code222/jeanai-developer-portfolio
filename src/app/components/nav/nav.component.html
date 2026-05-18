@@ -1,0 +1,13 @@
+<!-- src/app/components/nav/nav.component.html -->
+<nav>
+  <div class="nav-links">
+    <a
+      *ngFor="let item of navItems"
+      [class.active]="activeSection === item.id"
+      (click)="scrollTo(item.id)"
+    >
+      <i class="ti {{ item.icon }}"></i>
+      {{ item.label }}
+    </a>
+  </div>
+</nav>

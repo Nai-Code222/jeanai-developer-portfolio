@@ -1,0 +1,55 @@
+<!-- src/app/components/projects/projects.component.html -->
+<section id="projects">
+  <div class="section-inner">
+    <p class="eyebrow" appReveal>Work</p>
+    <h2 class="section-h" appReveal [revealDelay]="80">Selected <em>projects.</em></h2>
+
+    <div class="projects-grid">
+      <div
+        class="pc"
+        *ngFor="let project of projects; let i = index"
+        appReveal
+        [revealDelay]="i * 80"
+      >
+        <!-- Preview illustration -->
+        <div class="pc-img" [ngClass]="'preview-' + project.previewType">
+          <div class="preview-inner">
+            <span class="preview-glyph">{{ i === 0 ? '◈' : i === 1 ? '⬡' : '⬢' }}</span>
+            <span class="preview-url">{{ ['bloom.app', 'petalpay.io', 'bloomboard.app'][i] }}</span>
+          </div>
+        </div>
+
+        <!-- Body -->
+        <div class="pc-body">
+          <!-- Status badge -->
+          <div
+            class="status-badge"
+            [style.color]="badgeColor(project.status)"
+            [style.background]="badgeBg(project.status)"
+            [style.borderColor]="badgeColor(project.status) + '33'"
+          >
+            <span class="status-dot" [style.background]="badgeColor(project.status)"></span>
+            {{ project.status }}
+          </div>
+
+          <h3 class="pc-title">{{ project.title }}</h3>
+          <p class="pc-desc">{{ project.description }}</p>
+
+          <div class="pc-tags">
+            <span class="pc-tag" *ngFor="let tag of project.tags">{{ tag }}</span>
+          </div>
+        </div>
+
+        <!-- Footer links -->
+        <div class="pc-footer">
+          <a [href]="project.codeUrl" class="pc-link">
+            <i class="ti ti-brand-github"></i> Code
+          </a>
+          <a [href]="project.demoUrl" class="pc-link">
+            <i class="ti ti-external-link"></i> Live Demo
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

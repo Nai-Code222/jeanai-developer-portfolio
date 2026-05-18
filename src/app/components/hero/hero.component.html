@@ -1,0 +1,51 @@
+<!-- src/app/components/hero/hero.component.html -->
+<section id="home">
+  <div class="hero-glass">
+
+    <!-- Avatar -->
+    <div class="hero-avatar-wrap">
+      <div class="hero-avatar-ring">
+        <img
+          class="hero-avatar"
+          src="assets/images/avatar.png"
+          alt="Jeanai Roberts illustrated avatar"
+        />
+      </div>
+    </div>
+
+    <!-- Available badge -->
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      Open to opportunities
+    </div>
+
+    <!-- Name -->
+    <h1 class="hero-name">
+      Jeanai<br>
+      <em>Roberts.</em>
+    </h1>
+
+    <!-- Brand -->
+    <p class="hero-brand">NaiCode Labs</p>
+
+    <!-- Animated role -->
+    <p class="hero-role">
+      <span class="c-dim">~/dev $</span>
+      <span class="role-text" [class.visible]="roleVisible">{{ currentRole }}</span>
+      <span class="blink">|</span>
+    </p>
+
+    <!-- Description -->
+    <p class="hero-desc">
+      Software engineer crafting beautiful, performant digital products —
+      from pixel-perfect web interfaces to robust mobile experiences.
+    </p>
+
+    <!-- CTAs -->
+    <div class="hero-actions">
+      <button class="btn-fill" (click)="scrollTo('projects')">View My Work</button>
+      <button class="btn-outline" (click)="scrollTo('contact')">Let's Talk</button>
+    </div>
+
+  </div>
+</section>

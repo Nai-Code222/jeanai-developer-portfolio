@@ -1,0 +1,275 @@
+/* ============================================================
+   NaiCode Labs — Global Design System
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.26.0/dist/tabler-icons.min.css');
+
+/* ── Design Tokens ── */
+:root {
+  --white:        #FFFFFF;
+  --bg:           #F8F5FA;
+  --surface:      #FFF0F8;
+
+  --p50:          #FFF0F8;
+  --p100:         #FFD6EE;
+  --p200:         #FFAED8;
+  --p300:         #FF85C2;
+  --p400:         #F060A8;
+  --p500:         #CC3D87;
+  --p600:         #A32D6C;
+
+  --text:         #0D0010;
+  --text-2:       #4A3550;
+  --text-3:       #9B8AA5;
+
+  --border:       rgba(255, 255, 255, 0.75);
+  --border-pink:  rgba(240, 96, 168, 0.18);
+
+  --glass:        rgba(255, 255, 255, 0.68);
+  --glass-2:      rgba(255, 255, 255, 0.45);
+  --glass-strong: rgba(255, 255, 255, 0.85);
+
+  --shadow:       0 8px 40px rgba(176, 80, 140, 0.10), 0 2px 8px rgba(0,0,0,0.04);
+  --shadow-lg:    0 20px 60px rgba(176, 80, 140, 0.15), 0 4px 16px rgba(0,0,0,0.06);
+
+  --radius:       20px;
+  --radius-sm:    12px;
+  --radius-pill:  100px;
+
+  --blur:         blur(24px);
+  --blur-sm:      blur(16px);
+
+  --serif:        'Playfair Display', Georgia, serif;
+  --sans:         'DM Sans', sans-serif;
+  --mono:         'JetBrains Mono', monospace;
+
+  --grad:         linear-gradient(135deg, #FFD6EE 0%, #FFAED8 40%, #FF85C2 80%, #FFB3D9 100%);
+  --grad-text:    linear-gradient(120deg, #F060A8, #FF85C2, #F060A8);
+}
+
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* ── Scroll Progress Bar ── */
+#progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  z-index: 999;
+  background: var(--grad);
+  width: 0%;
+  transition: width 0.1s linear;
+  border-radius: 0 2px 2px 0;
+}
+
+/* ── Custom Cursor ── */
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  transition: width 0.2s, height 0.2s;
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--p400);
+}
+
+.cursor-ring {
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid rgba(240, 96, 168, 0.4);
+  background: rgba(240, 96, 168, 0.04);
+}
+
+body.hovering .cursor-dot  { width: 14px; height: 14px; background: var(--p300); }
+body.hovering .cursor-ring { width: 46px; height: 46px; border-color: rgba(240, 96, 168, 0.3); }
+
+/* ── Background Orbs ── */
+.orb-field {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.55;
+  animation: drift 12s ease-in-out infinite;
+}
+
+.orb-1 { width: 520px; height: 520px; background: radial-gradient(circle, #FFD6EE, transparent 70%); top: -15%; left: -10%; animation-duration: 14s; }
+.orb-2 { width: 420px; height: 420px; background: radial-gradient(circle, #FFAED8, transparent 70%); top: 30%; right: -8%; animation-delay: -4s; animation-duration: 10s; }
+.orb-3 { width: 340px; height: 340px; background: radial-gradient(circle, #FFC2E8, transparent 70%); bottom: 10%; left: 25%; animation-delay: -7s; animation-duration: 16s; }
+.orb-4 { width: 260px; height: 260px; background: radial-gradient(circle, #FFE0F3, transparent 70%); top: 60%; left: 5%; animation-delay: -2s; animation-duration: 11s; }
+
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(25px, -35px) scale(1.06); }
+  66%       { transform: translate(-20px, 20px) scale(0.96); }
+}
+
+/* ── Section shared ── */
+section {
+  position: relative;
+  z-index: 1;
+  padding: 7rem 2rem;
+}
+
+.section-inner {
+  max-width: 1060px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--p500);
+  margin-bottom: 1rem;
+
+  &::before {
+    content: '';
+    width: 18px;
+    height: 1.5px;
+    background: var(--p400);
+    border-radius: 2px;
+  }
+}
+
+.section-h {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 1rem;
+
+  em {
+    font-style: italic;
+    color: var(--p400);
+  }
+}
+
+/* ── Glass Card ── */
+.glass-card {
+  background: var(--glass);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+/* ── Buttons ── */
+.btn-fill {
+  background: var(--p400);
+  color: #fff;
+  padding: 0.85rem 2.2rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-decoration: none;
+  border: none;
+  cursor: none;
+  display: inline-block;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 20px rgba(240, 96, 168, 0.35);
+
+  &:hover {
+    background: var(--p500);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(240, 96, 168, 0.4);
+  }
+}
+
+.btn-outline {
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--p500);
+  padding: 0.85rem 2.2rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1.5px solid var(--p200);
+  cursor: none;
+  display: inline-block;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: var(--p50);
+    border-color: var(--p300);
+    transform: translateY(-2px);
+  }
+}
+
+/* ── Reveal animation ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+
+  &.show { opacity: 1; transform: translateY(0); }
+  &.d1   { transition-delay: 0.08s; }
+  &.d2   { transition-delay: 0.16s; }
+  &.d3   { transition-delay: 0.24s; }
+  &.d4   { transition-delay: 0.32s; }
+}
+
+/* ── Shimmer animation ── */
+@keyframes shimmer {
+  to { background-position: 200% center; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.7); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50%       { opacity: 1; transform: scale(1.04); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 820px) {
+  section { padding: 5rem 1.5rem; }
+}

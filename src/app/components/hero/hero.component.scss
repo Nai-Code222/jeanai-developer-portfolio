@@ -1,0 +1,177 @@
+// src/app/components/hero/hero.component.scss
+section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: 100px;
+}
+
+.hero-glass {
+  background: var(--glass-strong);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  border: 1px solid var(--border);
+  border-radius: 32px;
+  box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255,255,255,0.9);
+  padding: 4rem 5rem;
+  max-width: 780px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -60%; left: -40%;
+    width: 130%; height: 80%;
+    background: radial-gradient(ellipse, rgba(255,214,238,0.5) 0%, transparent 70%);
+    pointer-events: none;
+  }
+}
+
+/* Avatar */
+.hero-avatar-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.4rem;
+}
+
+.hero-avatar-ring {
+  width: 148px;
+  height: 148px;
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,192,220,0.6));
+  box-shadow: 0 0 0 1.5px rgba(255,255,255,0.9), 0 8px 40px rgba(240,96,168,0.22);
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 35%, rgba(255,210,235,0.55), rgba(255,255,255,0.12) 70%);
+    z-index: -1;
+    animation: glow-pulse 3s ease-in-out infinite;
+  }
+}
+
+.hero-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+/* Badge */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--p50);
+  border: 1px solid var(--p100);
+  border-radius: var(--radius-pill);
+  padding: 0.35rem 1rem;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--p500);
+  letter-spacing: 0.1em;
+  margin-bottom: 2.2rem;
+}
+
+.hero-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--p400);
+  animation: pulse 2s infinite;
+}
+
+/* Name */
+.hero-name {
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+
+  em {
+    font-style: italic;
+    color: var(--p400);
+  }
+}
+
+/* Brand */
+.hero-brand {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  background: var(--grad-text);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+/* Role ticker */
+.hero-role {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--text-3);
+  margin-bottom: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+
+  .c-dim { color: var(--text-3); }
+}
+
+.role-text {
+  color: var(--p400);
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.blink {
+  color: var(--p300);
+  animation: pulse 1s infinite;
+}
+
+/* Description */
+.hero-desc {
+  font-size: 1.05rem;
+  color: var(--text-2);
+  line-height: 1.75;
+  font-weight: 300;
+  max-width: 480px;
+  margin: 0 auto 2.5rem;
+}
+
+/* Actions */
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 820px) {
+  .hero-glass { padding: 3rem 2rem; }
+}
