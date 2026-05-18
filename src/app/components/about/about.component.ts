@@ -25,23 +25,24 @@ import { RevealDirective } from '../shared/reveal.directive';
               Building with <em>purpose,</em><br>powered by curiosity.
             </h2>
             <p class="about-p" appReveal [revealDelay]="160">
-              Hey! I'm Jeanai — a full-stack developer and founder of NaiCode Labs.
-              I specialise in building elegant, accessible products that live at the
-              intersection of great design and solid engineering.
+              Hey! I'm Jeanai — a full-stack software engineer based in Austin, TX with
+              experience building enterprise-grade web applications and production mobile apps.
+              I've shipped features at General Motors and launched a live iOS & Android app as
+              the sole developer.
             </p>
             <p class="about-p" appReveal [revealDelay]="160">
-              I believe the best software is invisible — it just works, beautifully.
-              Whether I'm architecting a backend system or polishing the last 1px of a UI,
-              I bring the same obsession with craft to everything I build.
+              I work across the full stack — Angular frontends, Spring Boot microservices,
+              React Native mobile apps, and Firebase cloud architecture — always with an eye
+              toward clean design and reliable engineering.
             </p>
             <div class="about-stat-row" appReveal [revealDelay]="240">
               <div class="about-stat">
-                <div class="about-stat-n">5+</div>
+                <div class="about-stat-n">3+</div>
                 <div class="about-stat-l">Years Exp.</div>
               </div>
               <div class="about-stat">
-                <div class="about-stat-n">30+</div>
-                <div class="about-stat-l">Projects</div>
+                <div class="about-stat-n">5+</div>
+                <div class="about-stat-l">Apps Shipped</div>
               </div>
               <div class="about-stat">
                 <div class="about-stat-n">∞</div>
@@ -59,20 +60,13 @@ import { RevealDirective } from '../shared/reveal.directive';
 
     .about-grid {
       display: grid;
-      grid-template-columns: 360px 1fr;
+      grid-template-columns: 1fr;
       gap: 3.5rem;
       align-items: center;
     }
 
     .about-img-card {
-      background: var(--glass);
-      backdrop-filter: var(--blur);
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      overflow: hidden;
-      box-shadow: var(--shadow-lg);
-      aspect-ratio: 3/4;
-      position: relative;
+      display: none;
     }
 
     .about-img-inner {

@@ -101,7 +101,6 @@ import { Skill } from '../../models/portfolio.models';
       cursor: default;
 
       &:hover { background: var(--p50); border-color: var(--p300); color: var(--p500); transform: scale(1.04); }
-      &.featured { background: var(--p50); border-color: var(--p200); color: var(--p500); }
     }
 
     @media (max-width: 820px) {

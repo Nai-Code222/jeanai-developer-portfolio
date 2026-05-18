@@ -53,8 +53,15 @@ import { RevealDirective } from '../shared/reveal.directive';
           <div class="contact-social">
             <a href="#" class="social-pill"><span class="social-icon">gh</span> GitHub</a>
             <a href="#" class="social-pill"><span class="social-icon">in</span> LinkedIn</a>
-            <a href="mailto:jeanai@naicodelabs.com" class="social-pill"><span class="social-icon">@</span> Email</a>
-            <a href="https://instagram.com/Nai.Code" class="social-pill"><span class="social-icon">ig</span> @Nai.Code</a>
+            <a href="mailto:JeanaiRoberts&#64;outlook.com" class="social-pill"><span class="social-icon">&#64;</span> Email</a>
+            <a href="assets/JeanaiRoberts_Resume.pdf" download="JeanaiRoberts_Resume.pdf" class="social-pill resume-pill">
+              <svg class="dl-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Resume
+            </a>
           </div>
         </div>
       </div>
@@ -144,6 +151,10 @@ import { RevealDirective } from '../shared/reveal.directive';
     }
 
     .social-icon { font-family: var(--mono); font-size: 0.72rem; color: var(--p400); }
+
+    .resume-pill { border-color: var(--p200); color: var(--p500); }
+
+    .dl-icon { width: 0.85rem; height: 0.85rem; color: var(--p400); flex-shrink: 0; }
 
     @media (max-width: 820px) {
       .contact-card { padding: 2.5rem 1.5rem; }

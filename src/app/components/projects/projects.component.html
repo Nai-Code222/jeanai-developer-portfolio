@@ -12,24 +12,53 @@
         [revealDelay]="i * 80"
       >
         <!-- Preview illustration -->
-        <div class="pc-img" [ngClass]="'preview-' + project.previewType">
-          <div class="preview-inner">
-            <span class="preview-glyph">{{ i === 0 ? '◈' : i === 1 ? '⬡' : '⬢' }}</span>
-            <span class="preview-url">{{ ['bloom.app', 'petalpay.io', 'bloomboard.app'][i] }}</span>
+        <div class="pc-img" [ngClass]="['preview-' + project.previewType, project.screenshots?.length ? 'has-screenshots' : '']">
+          <div *ngIf="project.screenshots?.length; else glyphPreview" class="screenshot-carousel">
+            <div
+              class="screenshot-row"
+              [class.single]="project.screenshots!.length === 1"
+              [class.web-row]="project.platform === 'Web'"
+              #scrollEl
+              (scroll)="onScroll($event, project.id)"
+            >
+              <img
+                *ngFor="let shot of project.screenshots"
+                [src]="shot"
+                [alt]="project.title + ' screenshot'"
+                class="screenshot-img"
+                [class.web-shot]="project.platform === 'Web'"
+              />
+            </div>
+            <div class="screenshot-dots" *ngIf="project.screenshots!.length > 1">
+              <span
+                *ngFor="let s of project.screenshots; let di = index"
+                class="dot"
+                [class.active]="activeIdx(project.id) === di"
+                (click)="goTo(scrollEl, di, project.id)"
+              ></span>
+            </div>
           </div>
+          <ng-template #glyphPreview>
+            <div class="preview-inner">
+              <span class="preview-glyph">{{ project.previewGlyph }}</span>
+              <span class="preview-url">{{ project.previewLabel }}</span>
+            </div>
+          </ng-template>
         </div>
 
         <!-- Body -->
         <div class="pc-body">
-          <!-- Status badge -->
-          <div
-            class="status-badge"
-            [style.color]="badgeColor(project.status)"
-            [style.background]="badgeBg(project.status)"
-            [style.borderColor]="badgeColor(project.status) + '33'"
-          >
-            <span class="status-dot" [style.background]="badgeColor(project.status)"></span>
-            {{ project.status }}
+          <div class="pc-pill-row">
+            <div
+              class="status-badge"
+              [style.color]="badgeColor(project.status)"
+              [style.background]="badgeBg(project.status)"
+              [style.borderColor]="badgeColor(project.status) + '33'"
+            >
+              <span class="status-dot" [style.background]="badgeColor(project.status)"></span>
+              {{ project.status }}
+            </div>
+            <span class="platform-badge">{{ project.platform }}</span>
           </div>
 
           <h3 class="pc-title">{{ project.title }}</h3>
@@ -42,10 +71,10 @@
 
         <!-- Footer links -->
         <div class="pc-footer">
-          <a [href]="project.codeUrl" class="pc-link">
+          <a *ngIf="project.codeUrl" [href]="project.codeUrl" target="_blank" rel="noopener" class="pc-link">
             <i class="ti ti-brand-github"></i> Code
           </a>
-          <a [href]="project.demoUrl" class="pc-link">
+          <a *ngIf="project.demoUrl" [href]="project.demoUrl" target="_blank" rel="noopener" class="pc-link">
             <i class="ti ti-external-link"></i> Live Demo
           </a>
         </div>

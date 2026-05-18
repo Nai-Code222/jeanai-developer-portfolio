@@ -5,10 +5,14 @@ export interface Project {
   title: string;
   description: string;
   tags: string[];
-  status: 'Complete' | 'In Deployment' | 'In Progress';
-  codeUrl: string;
-  demoUrl: string;
+  platform: 'Mobile' | 'Web' | 'iOS';
+  status: 'Complete' | 'In Deployment' | 'In Progress' | 'Live';
+  codeUrl?: string;
+  demoUrl?: string;
   previewType: 'phones' | 'workflow' | 'dashboard';
+  previewGlyph: string;
+  previewLabel: string;
+  screenshots?: string[];
 }
 
 export interface Skill {
